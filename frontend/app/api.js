@@ -1,7 +1,7 @@
 // frontend/app/api.js
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const BACKEND_URL = "http://circular-app-dzfd.vercel.app"; // your backend base
+export const BACKEND_URL = "https://circularappfinal.onrender.com"; // your backend base
 const BASE_API = `${BACKEND_URL.replace(/\/$/, "")}/api/events`;
 const ADMIN_API = `${BACKEND_URL.replace(/\/$/, "")}/api/admin`;
 

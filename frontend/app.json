@@ -1,16 +1,18 @@
 {
   "expo": {
     "name": "TCE Circular App",
-    "slug": "tce-circular-app",
+    "slug": "tce_circular_app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/tcelogo.png",
     "scheme": "tce-circular-app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+
     "ios": {
       "supportsTablet": true
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/tcelogo.png",
@@ -18,12 +20,16 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.devadsk.tcecircularapp"
+
+      /** 🔥 Important — Your own package name */
+      "package": "com.jenissajiya.tcecircularapp"
     },
+
     "web": {
       "output": "static",
       "favicon": "./assets/images/tcelogo.png"
     },
+
     "plugins": [
       "expo-router",
       [
@@ -40,16 +46,22 @@
       ],
       "expo-web-browser"
     ],
+
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
+
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "2582e70b-7606-47a8-8fc7-54db100943ce"
+        /** 🔥 Your own EAS project ID */
+        "projectId": "25dd07c8-0777-4cf4-9e45-748f0b764fc8"
       }
     },
-    "owner": "devadsk"
+
+    /** 🔥 Your Expo username */
+    "owner": "jenissajiya"
   }
 }
+

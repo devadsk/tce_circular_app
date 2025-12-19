@@ -89,55 +89,6 @@ export default function StudentScreen() {
     return start <= today && end >= today;
   };
 
-  const styles = StyleSheet.create({
-    root: { flex: 1, backgroundColor: "#fff" },
-    container: { flex: 1, padding: 20 },
-    input: {
-      borderWidth: 1,
-      padding: 10,
-      marginVertical: 5,
-      borderRadius: 5,
-      borderColor: "#ccc",
-      color: "#5687d2ff",
-      backgroundColor: "#fff",
-    },
-    card: {
-      padding: 12,
-      borderWidth: 1,
-      borderColor: "#ccc",
-      borderRadius: 8,
-      marginVertical: 6,
-      backgroundColor: "#fff",
-      shadowColor: "#000",
-      shadowOpacity: 0.1,
-      shadowOffset: { width: 0, height: 2 },
-      shadowRadius: 4,
-      elevation: 2,
-    },
-    cardTitle: { fontWeight: "bold", fontSize: 16, color: "#000", marginBottom: 5 },
-    cardText: { color: "#333", marginBottom: 3 },
-    linkText: { color: "#1E90FF", textDecorationLine: "underline" },
-    headerText: { marginTop: 20, fontSize: 18, color: "#1E90FF" },
-    sectionHeader: { marginTop: 20, fontSize: 18, color: "#1E90FF" },
-    picker: {
-      marginVertical: 10,
-      borderWidth: 1,
-      borderColor: "#ccc",
-      borderRadius: 5,
-      backgroundColor: "#fff",
-    },
-    buttonContainer: { marginTop: 5 },
-    smallBtn: {
-      paddingVertical: 10,
-      paddingHorizontal: 12,
-      borderRadius: 6,
-      backgroundColor: "#1E90FF",
-      alignItems: "center",
-      marginTop: 6,
-    },
-    smallBtnText: { color: "#fff", fontWeight: "600" },
-  });
-
   return (
     <>
       <Stack.Screen
@@ -171,21 +122,25 @@ export default function StudentScreen() {
           />
 
           {/* Filter */}
-          <Text style={styles.sectionHeader}>Filter Events: </Text>
-          <Picker
-            selectedValue={filter}
-            onValueChange={(val) => setFilter(val)}
-            style={styles.picker}
-            itemStyle={{ color: "#000" }}
-          >
-            <Picker.Item label="All" value="all" />
-            <Picker.Item label="Ongoing" value="ongoing" />
-            <Picker.Item label="Upcoming" value="upcoming" />
-            <Picker.Item label="Past" value="past" />
-          </Picker>
+          <Text style={styles.sectionHeader}>Filter Events:</Text>
 
-          {/* Event Cards */}
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={filter}
+              onValueChange={(val) => setFilter(val)}
+              style={styles.picker}
+              itemStyle={{ color: "#000" }}
+            >
+              <Picker.Item label="All" value="all" />
+              <Picker.Item label="Ongoing" value="ongoing" />
+              <Picker.Item label="Upcoming" value="upcoming" />
+              <Picker.Item label="Past" value="past" />
+            </Picker>
+          </View>
+
+          {/* Events */}
           <Text style={styles.sectionHeader}>Events:</Text>
+
           {filteredEvents.length === 0 ? (
             <Text style={styles.cardText}>No events available.</Text>
           ) : (
@@ -204,10 +159,12 @@ export default function StudentScreen() {
                 <Text style={styles.cardTitle}>
                   {e.name} {e.category ? `(${e.category})` : null}
                 </Text>
+
                 <Text style={styles.cardText}>
                   {new Date(e.startDate).toLocaleDateString()} to{" "}
                   {new Date(e.endDate).toLocaleDateString()}
                 </Text>
+
                 <Text style={styles.cardText}>{e.time}</Text>
                 <Text style={styles.cardText}>{e.venue}</Text>
                 <Text style={styles.cardText}>{e.description}</Text>
@@ -228,3 +185,62 @@ export default function StudentScreen() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: "#fff" },
+  container: { flex: 1, padding: 20 },
+
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 5,
+    borderColor: "#ccc",
+    color: "#5687d2ff",
+    backgroundColor: "#fff",
+  },
+
+  pickerContainer: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    backgroundColor: "#fff",
+    marginVertical: 10,
+    overflow: "hidden",
+  },
+
+  picker: {
+    width: "100%",
+    height: 50,
+  },
+
+  card: {
+    padding: 12,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    marginVertical: 6,
+    backgroundColor: "#fff",
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 2,
+  },
+
+  cardTitle: { fontWeight: "bold", fontSize: 16, color: "#000", marginBottom: 5 },
+  cardText: { color: "#333", marginBottom: 3 },
+
+  smallBtn: {
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    backgroundColor: "#1E90FF",
+    alignItems: "center",
+    marginTop: 6,
+  },
+
+  smallBtnText: { color: "#fff", fontWeight: "600" },
+
+  sectionHeader: { marginTop: 20, fontSize: 18, color: "#1E90FF" },
+});

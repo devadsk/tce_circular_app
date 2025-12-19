@@ -284,17 +284,20 @@ export default function AdminScreen() {
           />
 
           
-            <Picker
-              selectedValue={filter}
-              onValueChange={(val) => setFilter(val)}
-              style={styles.picker}
-              itemStyle={{ color: "#000" }}
-            >
-            <Picker.Item label="All" value="all" />
-            <Picker.Item label="Ongoing" value="ongoing" />
-            <Picker.Item label="Upcoming" value="upcoming" />
-            <Picker.Item label="Past" value="past" />
-            </Picker>
+            <View style={{ borderWidth: 1, borderColor: "#ccc", borderRadius: 8, marginVertical: 6, height: 48, overflow: "hidden", backgroundColor: "#fff" }}>
+  <Picker
+    selectedValue={filter}
+    onValueChange={(val) => setFilter(val)}
+    style={{ width: "100%", height: "100%" }}
+    dropdownIconColor="#000"
+  >
+    <Picker.Item label="All" value="all" />
+    <Picker.Item label="Ongoing" value="ongoing" />
+    <Picker.Item label="Upcoming" value="upcoming" />
+    <Picker.Item label="Past" value="past" />
+  </Picker>
+</View>
+
 
           <Text style={styles.sectionTitle}>All Events</Text>
           {filteredEvents.length === 0 ? (
@@ -351,10 +354,19 @@ export default function AdminScreen() {
         keyboardType="email-address"
       />
 
-      <Picker selectedValue={action} onValueChange={setAction} style={styles.picker} itemStyle={{ color: "#000" }}>
-        <Picker.Item label="Grant Admin" value="grant" />
-        <Picker.Item label="Revoke Admin" value="revoke" />
-      </Picker>
+      <View style={{ borderWidth: 1, borderColor: "#ccc", borderRadius: 8, height: 48, marginVertical: 6, backgroundColor: "#fff", overflow: "hidden" }}>
+  <Picker
+    selectedValue={action}
+    onValueChange={setAction}
+    style={{ width: "100%", height: "100%" }}
+    dropdownIconColor="#000"
+  >
+    
+    <Picker.Item label="Grant Admin" value="grant" />
+    <Picker.Item label="Revoke Admin" value="revoke" />
+  </Picker>
+</View>
+
 
 
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
